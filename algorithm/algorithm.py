@@ -1,7 +1,7 @@
 class UserPokemon(type, attack, defense, spec_attack, spec_defense, ability):
     pass
 
-def modifier(targets, weather, random, stab, move_type, burn, other):
+def modifier(targets, weather, random, stab, move_type, phys_or_spec, burned, other):
      if targets > 1:
          target_mod = 0.75
     else:
@@ -23,7 +23,15 @@ def modifier(targets, weather, random, stab, move_type, burn, other):
         stab = 1
 
     
-    
+    # type stuff goes here - should make it a dictionary
+
+    if burned == True and ability != 'guts' and phys_or_spec == 'physical':
+        burn_mod = 0.5
+    else:
+        burn_mod = 1
+
+
+
     
 
 def damage(level, power, attack, defense):
