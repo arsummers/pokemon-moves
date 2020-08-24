@@ -23,7 +23,16 @@ def modifier(targets, weather, random, stab, move_type, phys_or_spec, burned, ot
         stab = 1
 
     
-    # type stuff goes here - should make it a dictionary
+    # type stuff goes here - should make it a dictionary. Will match type of move against type(s) of enemy pokemon. Defaults to 1 for regular effective. resistant -->, weak against --> .5, or .25 if doubled, strong against --> 2, or 4 if double
+    type_chart = [
+        resistant_to = {'normal': 'ghost',},
+        weak_against = {'normal': ['rock', 'steel'],},
+        strong_against = {'normal': '',},
+    ]
+    
+
+
+
 
     if burned == True and ability != 'guts' and phys_or_spec == 'physical':
         burn_mod = 0.5
