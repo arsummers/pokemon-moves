@@ -24,11 +24,19 @@ def modifier(targets, weather, random, stab, move_type, phys_or_spec, burned, ot
 
     
     # type stuff goes here - should make it a dictionary. Will match type of move against type(s) of enemy pokemon. Defaults to 1 for regular effective. resistant -->, weak against --> .5, or .25 if doubled, strong against --> 2, or 4 if double
-    type_chart = [
-        resistant_to = {'normal': 'ghost',},
-        weak_against = {'normal': ['rock', 'steel'],},
-        strong_against = {'normal': '',},
-    ]
+
+    # I need to think about how I'm going to access this to match everything up. Current idea: access type chart. The user's movetype 
+    type_chart = {
+        'normal' = [[0, 'ghost', None], [.5, 'rock', 'steel']],
+        
+    }
+
+    # type_chart = [
+    #     resistant_to = {},
+    #     immune_to = {'normal': ['ghost']}
+    #     weak_against = {'normal': ['rock', 'steel'],},
+    #     strong_against = {'normal': '',},
+    # ]
     
 
 
