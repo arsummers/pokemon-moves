@@ -30,8 +30,11 @@ def modifier(targets, weather, random, stab, move_type, phys_or_spec, burned, ot
     # I need to think about how I'm going to access this to match everything up. To access the right type effectiveness multiplier: match the move type with the first key. Check each type for the enemy pokemon via the nested dict key, then store them in 2 variables. Second variable will default to 1. The multiple of those variables will the be type bonus multiplier.
     type_chart = {
         'normal' : {'ghost': 0, 'rock' : 0.5, 'steel': 0.5,}, 
-        'fire' : {0.5 : ['rock', 'steel'], {2: ['grass', 'ice', 'bug', 'steel']},
- 
+        'fire' : {0.5 : ['rock', 'steel'], {2: ['grass', 'ice', 'bug', 'steel']}},
+        'water' : {'fire': 2, 'water': 0.5, 'grass': 0.5, 'ground': 2, 'rock': 2, 'dragon': 0.5},
+        'electric': {'water': 2, 'flying': 2, 'electric': 0.5, 'grass': 0.5, 'ground': 0, 'dragon': 0.5},
+        'grass': {'fire': 0.5, 'water': 2, 'grass': 0.5, 'poison': 0.5, 'ground': 2, 'flying': 0.5, 'bug': 0.5, 'rock': 2, 'dragon': 0.5, 'steel': 0.5},
+        
 
     }
 
