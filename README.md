@@ -36,3 +36,4 @@
       
 ## Sources:
 (Bulbapedia)[https://bulbapedia.bulbagarden.net/wiki/Damage]
+(Type chart)[https://pokemondb.net/type]
