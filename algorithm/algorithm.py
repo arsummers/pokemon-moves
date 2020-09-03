@@ -1,24 +1,43 @@
-class UserPokemon(self, type_primary, type_secondary attack, defense, spec_attack, spec_defense, ability):
-    type_primary = self.type_primary
-    type_secondary = self.type_secondary
-    attack = self.attack
-    defense = self.defense
-    spec_attack = self.spec_attack
-    spec_defense = self.spec_defense
-    ability = self.ability
+class UserPokemon:
+    # probs gonna have to pass some of these in but will need to think about it
+    def __init__():
+        self.species = species
+        self.type_primary = type_primary
+        self.type_secondary = type_secondary
+        self.attack = attack
+        self.defense = defense
+        self.spec_attack = spec_attack
+        self.spec_defense = spec_defense
+        self.ability = ability
+        self.move_type = move_type
+        self.level = level
 
-def modifier(targets, weather, random, stab, move_type, phys_or_spec, burned, other):
-     if targets > 1:
-         target_mod = 0.75
-    else:
-        target_mod = 1
 
-    if weather == 'rain' and move_type == 'water' or weather == 'harsh sunlight' and move_type == 'fire':
-        weather_mod = 1.5
-    elif weather == 'rain' and move_type == 'fire' or weather == 'harsh sunlight' and move_type == 'water':
-        weather_mod = 0.5
-    else:
-        weather_mod = 1
+class EnemyPokemon:
+    def __init__():
+        self.species = species
+        self.type_primary = type_primary
+        self.type_secondary = type_secondary
+        self.level = level
+
+
+# unsure if I want to keep this as a simple function, or keep it as a class with smaller functions within
+class Modifier:
+
+    def target_num():
+        if targets > 1:
+            target_mod = 0.75
+        else:
+            target_mod = 1
+
+
+    def weather_modifier():
+        if weather == 'rain' and move_type == 'water' or weather == 'harsh sunlight' and move_type == 'fire':
+            weather_mod = 1.5
+        elif weather == 'rain' and move_type == 'fire' or weather == 'harsh sunlight' and move_type == 'water':
+            weather_mod = 0.5
+        else:
+            weather_mod = 1
 
     # this syntax is wrong
     if move_type in UserPokemon_type and UserPokemon_ability == 'adaptability':
