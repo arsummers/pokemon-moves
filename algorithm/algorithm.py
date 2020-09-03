@@ -1,5 +1,11 @@
-class UserPokemon(type, attack, defense, spec_attack, spec_defense, ability):
-    pass
+class UserPokemon(self, type_primary, type_secondary attack, defense, spec_attack, spec_defense, ability):
+    type_primary = self.type_primary
+    type_secondary = self.type_secondary
+    attack = self.attack
+    defense = self.defense
+    spec_attack = self.spec_attack
+    spec_defense = self.spec_defense
+    ability = self.ability
 
 def modifier(targets, weather, random, stab, move_type, phys_or_spec, burned, other):
      if targets > 1:
@@ -48,6 +54,9 @@ def modifier(targets, weather, random, stab, move_type, phys_or_spec, burned, ot
         'steel': {'fire': 0.5, 'water': 0.5, 'electric': 0.5, 'ice': 2, 'rock': 2, 'steel': 0.5, 'fairy': 2},
         'fairy': {'fire': 0.5, 'fighting': 2, 'poison': 0.5, 'dragon': 2, 'dark': 2, 'steel': 0.5},
     }
+
+
+
 
     # phys_or_spec denotes the type of move used
     if burned == True and ability != 'guts' and phys_or_spec == 'physical':
