@@ -1,9 +1,8 @@
 class UserPokemon:
     # probs gonna have to pass some of these in but will need to think about it.
     def __init__():
-        self.species = species
-        self.type_primary = type_primary
-        self.type_secondary = type_secondary
+        self.species = species #str
+        self.user_type = user_type #lst
         self.attack = attack
         self.defense = defense
         self.spec_attack = spec_attack
@@ -16,8 +15,7 @@ class UserPokemon:
 class EnemyPokemon:
     def __init__():
         self.species = species
-        self.type_primary = type_primary
-        self.type_secondary = type_secondary
+        self.enemy_type = enemy_type
         self.level = level
 
 
@@ -46,9 +44,9 @@ class Modifier:
 
     # this syntax is wrong
     def stab_mod(move_type, stab):
-        if move_type in UserPokemon_type and UserPokemon_ability == 'adaptability':
+        if move_type in UserPokemon.type and UserPokemon.ability == 'adaptability':
             stab = 2.0
-        if move_type in UserPokemon_type:
+        if move_type in UserPokemon.type:
             stab = 1.5
         else:
             stab = 1
@@ -81,6 +79,16 @@ class Modifier:
         'fairy': {'fire': 0.5, 'fighting': 2, 'poison': 0.5, 'dragon': 2, 'dark': 2, 'steel': 0.5},
     }
 
+    # this will need some ironing out too
+    def calculate_type_effectiveness():
+        type_effectiveness_multiplier = 1
+        for type in type_chart:
+            if UserPokemon.move_type == type:
+                for key in type.values():
+                    if EnemyPokemon.pokemon_type == key:
+                        type_effectiveness_multiplier *= key[1]
+
+
 
 
 
@@ -96,12 +104,12 @@ class Modifier:
 
     
 
-def damage(level, power, attack, defense):
+    def damage(level, power, attack, defense):
 
-    level_mod = ((2 * level) / 5) + 2
-    
-    attack_def_mod = attack / defense
+        level_mod = ((2 * level) / 5) + 2
+        
+        attack_def_mod = attack / defense
 
-    dmg = (((level_mod * power * attack_def_mod) / 50) + 2) * modifier
+        dmg = (((level_mod * power * attack_def_mod) / 50) + 2) * modifier
 
-    return f'overall approximate damage: {dmg}'
+        return f'overall approximate damage: {dmg}'
