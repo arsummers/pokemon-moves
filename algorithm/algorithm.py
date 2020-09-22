@@ -24,11 +24,14 @@ class EnemyPokemon:
 # unsure if I want to keep this as a simple function, or keep it as a class with smaller functions within
 class Modifier:
 
-    def target_num():
+
+    def target_num(targets):
         if targets > 1:
             target_mod = 0.75
         else:
             target_mod = 1
+
+        return target_mod
 
 
     def weather_modifier():
