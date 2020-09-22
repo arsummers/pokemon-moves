@@ -1,5 +1,5 @@
 class UserPokemon:
-    # probs gonna have to pass some of these in but will need to think about it
+    # probs gonna have to pass some of these in but will need to think about it.
     def __init__():
         self.species = species
         self.type_primary = type_primary
@@ -34,21 +34,25 @@ class Modifier:
         return target_mod
 
 
-    def weather_modifier():
+    def weather_modifier(weather, move_type):
         if weather == 'rain' and move_type == 'water' or weather == 'harsh sunlight' and move_type == 'fire':
             weather_mod = 1.5
         elif weather == 'rain' and move_type == 'fire' or weather == 'harsh sunlight' and move_type == 'water':
             weather_mod = 0.5
         else:
             weather_mod = 1
+        return weather_mod
+
 
     # this syntax is wrong
-    if move_type in UserPokemon_type and UserPokemon_ability == 'adaptability':
-        stab = 2.0
-    if move_type in UserPokemon_type:
-        stab = 1.5
-    else:
-        stab = 1
+    def stab_mod(move_type, stab):
+        if move_type in UserPokemon_type and UserPokemon_ability == 'adaptability':
+            stab = 2.0
+        if move_type in UserPokemon_type:
+            stab = 1.5
+        else:
+            stab = 1
+        return stab
 
     
     # type stuff goes here - should make it a dictionary. Will match type of move against type(s) of enemy pokemon. Defaults to 1 for regular effective. resistant -->, weak against --> .5, or .25 if doubled, strong against --> 2, or 4 if double
@@ -81,10 +85,12 @@ class Modifier:
 
 
     # phys_or_spec denotes the type of move used
-    if burned == True and ability != 'guts' and phys_or_spec == 'physical':
-        burn_mod = 0.5
-    else:
-        burn_mod = 1
+    def is_burned():
+        if burned == True and ability != 'guts' and phys_or_spec == 'physical':
+            burn_mod = 0.5
+        else:
+            burn_mod = 1
+        return burn_mod
 
 
 
