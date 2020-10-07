@@ -16,9 +16,9 @@ def test_1_target():
 @pytest.fixture
 def user_pokemon_one():
     u_poke = UserPokemon()
-    u_poke.species = 'bulbasaur'
-    u_poke.species_type = ['', '']
-    u_poke.attack = 1
+    u_poke.species = 'charizard'
+    u_poke.species_type = ['fire', 'flying']
+    u_poke.attack = 50
     u_poke.defense = 1
     u_poke.spec_attack = 1
     u_poke.spec_defense = 1
@@ -27,6 +27,4 @@ def user_pokemon_one():
     u_poke.level = 5
 
 
-    
-
-    pass
+   
