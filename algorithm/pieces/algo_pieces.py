@@ -20,7 +20,7 @@ class UserPokemon:
     # probs gonna have to pass some of these in but will need to think about it.
     def __init__(self, species, species_type, attack, defense, spec_attack, spec_defense, ability, move_type, level):
         self.species = species #str
-        self.species_type = user_type #lst
+        self.species_type = species_type #lst
         self.attack = attack
         self.defense = defense
         self.spec_attack = spec_attack
@@ -28,3 +28,10 @@ class UserPokemon:
         self.ability = ability
         self.move_type = move_type #move type it is using
         self.level = level
+
+    def print_species(self):
+        print(self.species)
+
+charizard = UserPokemon('Charizard', ['fire', 'flying'], 15, 15, 15, 14, 'wut', 'fire', 36)
+
+charizard.print_species()
