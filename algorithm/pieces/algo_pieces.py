@@ -30,7 +30,7 @@ class UserPokemon:
         self.level = level
 
     def print_species(self):
-        print(self.species)
+        print(self.species, self.species_type)
 
 charizard = UserPokemon('Charizard', ['fire', 'flying'], 15, 15, 15, 14, 'wut', 'fire', 36)
 
