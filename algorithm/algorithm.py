@@ -58,7 +58,7 @@ class Modifier:
     # using a more repetive set up for this dictionary, to keep time complexity down.
 
     # I need to think about how I'm going to access this to match everything up. To access the right type effectiveness multiplier: match the move type with the first key. Check each type for the enemy pokemon via the nested dict key, then store them in 2 variables. Second variable will default to 1. The multiple of those variables will the be type bonus multiplier.
-    type_chart = {
+    type_matchup_chart = {
         'normal' : {'ghost': 0, 'rock' : 0.5, 'steel': 0.5,}, 
         'fire': {'rock': 0.5, 'steel': 0.5, 'grass': 2, 'ice': 2, 'bug': 2, 'steel': 2},
         'water' : {'fire': 2, 'water': 0.5, 'grass': 0.5, 'ground': 2, 'rock': 2, 'dragon': 0.5},
@@ -80,7 +80,7 @@ class Modifier:
     }
 
     # this will need some ironing out too
-    def calculate_type_effectiveness():
+    def calculate_type_effectiveness(type_chart):
         type_effectiveness_multiplier = 1
         for type in type_chart:
             if UserPokemon.move_type == type:
@@ -93,7 +93,7 @@ class Modifier:
 
 
     # phys_or_spec denotes the type of move used
-    def is_burned():
+    def is_burned(burned, ability, phys_or_spec):
         if burned == True and ability != 'guts' and phys_or_spec == 'physical':
             burn_mod = 0.5
         else:
@@ -104,7 +104,7 @@ class Modifier:
 
     
 
-    def damage(level, power, attack, defense):
+    def damage(level, power, attack, defense, modifier):
 
         level_mod = ((2 * level) / 5) + 2
         
