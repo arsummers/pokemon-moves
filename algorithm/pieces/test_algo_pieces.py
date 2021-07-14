@@ -1,5 +1,5 @@
 import pytest
-from algo_pieces import *
+from .algo_pieces import *
 
 def test_2_targets():
     targets = 2

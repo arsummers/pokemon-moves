@@ -37,3 +37,6 @@
 ## Sources:
 (Bulbapedia)[https://bulbapedia.bulbagarden.net/wiki/Damage]
 (Type chart)[https://pokemondb.net/type]
+
+
+Goal is to have a decent, deployable API that I can either feed into a flask templating front end, or deploy and feed to a react front end.

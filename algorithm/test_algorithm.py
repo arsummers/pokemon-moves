@@ -1,8 +1,7 @@
-from algorithm import modifier, damage
+from algorithm import UserPokemon, EnemyPokemon, Modifier
 
 def test_exists():
-    assert modifier
-    assert damage
+    pass
 
 def test_one():
     pass

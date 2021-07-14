@@ -1,19 +1,19 @@
 class UserPokemon:
     # probs gonna have to pass some of these in but will need to think about it.
-    def __init__():
+    def __init__(self, species, species_type, attack, defense, spec_attack, spec_defense, ability, move_type, level):
         self.species = species #str
-        self.user_type = user_type #lst
+        self.species_type = species_type #lst
         self.attack = attack
         self.defense = defense
         self.spec_attack = spec_attack
         self.spec_defense = spec_defense
         self.ability = ability
-        self.move_type = move_type
+        self.move_type = move_type #move type it is using
         self.level = level
 
 
 class EnemyPokemon:
-    def __init__():
+    def __init__(self, species, enemy_type, level):
         self.species = species
         self.enemy_type = enemy_type
         self.level = level
@@ -60,7 +60,7 @@ class Modifier:
     # I need to think about how I'm going to access this to match everything up. To access the right type effectiveness multiplier: match the move type with the first key. Check each type for the enemy pokemon via the nested dict key, then store them in 2 variables. Second variable will default to 1. The multiple of those variables will the be type bonus multiplier.
     type_chart = {
         'normal' : {'ghost': 0, 'rock' : 0.5, 'steel': 0.5,}, 
-        'fire': {'rock': 0.5, 'steel': 0.5, 'grass': 2, 'ice': 2, 'bug': 2, 'steel': 2}
+        'fire': {'rock': 0.5, 'steel': 0.5, 'grass': 2, 'ice': 2, 'bug': 2, 'steel': 2},
         'water' : {'fire': 2, 'water': 0.5, 'grass': 0.5, 'ground': 2, 'rock': 2, 'dragon': 0.5},
         'electric': {'water': 2, 'flying': 2, 'electric': 0.5, 'grass': 0.5, 'ground': 0, 'dragon': 0.5},
         'grass': {'fire': 0.5, 'water': 2, 'grass': 0.5, 'poison': 0.5, 'ground': 2, 'flying': 0.5, 'bug': 0.5, 'rock': 2, 'dragon': 0.5, 'steel': 0.5},
