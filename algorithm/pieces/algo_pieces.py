@@ -32,6 +32,16 @@ class UserPokemon:
     def print_species(self):
         print(self.species, self.species_type)
 
+
+class EnemyPokemon:
+    def __init__(self, species, enemy_type, level):
+        self.species = species
+        self.enemy_type = enemy_type
+        self.level = level
+
+
 charizard = UserPokemon('Charizard', ['fire', 'flying'], 15, 15, 15, 14, 'wut', 'fire', 36)
+
+bulbasaur = EnemyPokemon('Bulbasaur, [grass], 5')
 
 charizard.print_species()
