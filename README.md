@@ -45,3 +45,5 @@ Testing goals:
 - set up fixtures for a few different pokemon with various levels and typings
 - test for a few different weather scenarios
 - test for a a few different abilities
+
+Testing brownout for https

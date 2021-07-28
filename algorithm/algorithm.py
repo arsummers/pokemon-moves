@@ -104,12 +104,14 @@ class Modifier:
 
     
 
-    def damage(level, power, attack, defense, modifier):
+    def damage(level, power, attack, defense, weather, stab, type, targets=1, burn=1):
 
         level_mod = ((2 * level) / 5) + 2
         
         attack_def_mod = attack / defense
 
-        dmg = (((level_mod * power * attack_def_mod) / 50) + 2) * modifier
+        other_modifier = targets * weather * stab * type * burn
+
+        dmg = (((level_mod * power * attack_def_mod) / 50) + 2) * other_modifier
 
         return f'overall approximate damage: {dmg}'
