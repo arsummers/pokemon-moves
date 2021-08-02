@@ -11,6 +11,8 @@ class UserPokemon:
         self.move_type = move_type #move type it is using
         self.level = level
 
+    def print_species(self):
+        print(self.species, self.species_type, self.attack)
 
 class EnemyPokemon:
     def __init__(self, species, enemy_type, level):
@@ -18,6 +20,8 @@ class EnemyPokemon:
         self.enemy_type = enemy_type
         self.level = level
 
+    def print_species(self):
+        print(self.species, self.enemy_type)
 
 # unsure if I want to keep this as a simple function, or keep it as a class with smaller functions within
 class Modifier:
@@ -102,16 +106,24 @@ class Modifier:
 
 
 
+  # main damage algorithm  
+
+def damage(level, power, attack, defense, weather, stab, type, targets=1, burn=1):
+
+    level_mod = ((2 * level) / 5) + 2
     
+    attack_def_mod = attack / defense
 
-    def damage(level, power, attack, defense, weather, stab, type, targets=1, burn=1):
+    other_modifier = targets * weather * stab * type * burn
 
-        level_mod = ((2 * level) / 5) + 2
-        
-        attack_def_mod = attack / defense
+    dmg = (((level_mod * power * attack_def_mod) / 50) + 2) * other_modifier
 
-        other_modifier = targets * weather * stab * type * burn
+    return f'overall approximate damage: {dmg}'
 
-        dmg = (((level_mod * power * attack_def_mod) / 50) + 2) * other_modifier
 
-        return f'overall approximate damage: {dmg}'
+if __name__ == "__main__":
+    charizard = UserPokemon('Charizard', ['fire', 'flying'], 15, 15, 15, 14, 'wut', 'fire', 36)
+
+    bulbasaur = EnemyPokemon('Bulbasaur', ['grass'], 5)
+
+    charizard.print_species()
