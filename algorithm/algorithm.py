@@ -122,8 +122,8 @@ def damage(level, power, attack, defense, weather, stab, type, targets=1, burn=1
 
 
 if __name__ == "__main__":
-    charizard = UserPokemon('Charizard', ['fire', 'flying'], 15, 15, 15, 14, 'wut', 'fire', 36)
+    marshtomp = UserPokemon('Marshtomp', ['water', 'ground'], 52, 54, 52, 51, 'torrent', 'water', 29)
 
     bulbasaur = EnemyPokemon('Bulbasaur', ['grass'], 5)
 
-    charizard.print_species()
+    marshtomp.print_species()
