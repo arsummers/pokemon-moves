@@ -1,9 +1,11 @@
-from .algorithm import UserPokemon, EnemyPokemon, Modifier, damage
+import pytest
+from algorithm import UserPokemon, EnemyPokemon, Modifier, damage
 
 def test_exists():
     assert UserPokemon
     assert EnemyPokemon
     assert Modifier
+    assert damage
 
 def test_one():
     pass
