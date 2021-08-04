@@ -12,7 +12,7 @@ class UserPokemon:
         self.level = level
 
     def print_species(self):
-        print(self.species, self.species_type, self.attack)
+        print(self.species, self.species_type, 'Attack:', {self.attack})
 
 class EnemyPokemon:
     def __init__(self, species, enemy_type, level):
@@ -108,7 +108,8 @@ class Modifier:
 
   # main damage algorithm  
 
-def damage(level, power, attack, defense, weather, stab, type, targets=1, burn=1):
+# power is the number power of the moved used
+def damage(level, move_power, attack, defense, weather, stab, type, targets=1, burn=1):
 
     level_mod = ((2 * level) / 5) + 2
     
@@ -116,7 +117,7 @@ def damage(level, power, attack, defense, weather, stab, type, targets=1, burn=1
 
     other_modifier = targets * weather * stab * type * burn
 
-    dmg = (((level_mod * power * attack_def_mod) / 50) + 2) * other_modifier
+    dmg = (((level_mod * move_power * attack_def_mod) / 50) + 2) * other_modifier
 
     return f'overall approximate damage: {dmg}'
 
@@ -127,3 +128,7 @@ if __name__ == "__main__":
     bulbasaur = EnemyPokemon('Bulbasaur', ['grass'], 5)
 
     marshtomp.print_species()
+
+    approx_dmg = damage(marshtomp.level, 55, marshtomp.attack, 10, 1, 2, 1)
+    
+    print(approx_dmg)
