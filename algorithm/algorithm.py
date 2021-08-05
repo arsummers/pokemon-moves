@@ -110,7 +110,7 @@ class Modifier:
 
 def get_type_damage(move_type, enemy_type):
     # move type needs to match the initial index. enemy type is the one contained within that nested dictinary.
-    type_damage = 0
+    type_damage = 1
 
 
     type_chart = Modifier.type_matchup_chart
@@ -118,7 +118,7 @@ def get_type_damage(move_type, enemy_type):
 
     for i in enemy_type:
         if i not in move_type_access.keys():
-            type_damage = 1
+            type_damage *= 1
         else:
             move_type_effectiveness = move_type_access[i]
             type_damage *= move_type_effectiveness
