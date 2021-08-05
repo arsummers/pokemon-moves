@@ -108,6 +108,15 @@ class Modifier:
 
   # main damage algorithm  
 
+def get_type_damage(move_type, enemy_type):
+    # move type needs to match the initial index. enemy type is the one contained within that nested dictinary.
+    type_chart = Modifier.type_matchup_chart
+
+    move_type_access = type_chart[move_type]
+    move_type_effectiveness = move_type_access[enemy_type]
+
+    print(move_type_effectiveness)
+
 # power is the number power of the moved used
 def damage(level, move_power, attack, defense, weather, stab, type, targets=1, burn=1):
 
@@ -132,3 +141,4 @@ if __name__ == "__main__":
     approx_dmg = damage(marshtomp.level, 55, marshtomp.attack, 10, 1, 2, 1)
     
     print(approx_dmg)
+    get_type_damage('normal', 'ghost')

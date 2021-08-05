@@ -13,8 +13,9 @@ def test_one():
 
 
 @pytest.fixture
-def user_charizard(UserPokemon):
-    pass
+def user_marshtomp(UserPokemon):
+    marshtomp = UserPokemon()
+    return marshtomp
 
 @pytest.fixture
 def enemy_charizard(UserPokemon):
