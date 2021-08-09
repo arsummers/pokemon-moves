@@ -147,8 +147,9 @@ if __name__ == "__main__":
 
     marshtomp.print_species()
 
-    approx_dmg = damage(marshtomp.level, 55, marshtomp.attack, 10, 1, 2, 1)
+    approx_dmg = damage(marshtomp.level, 55, marshtomp.attack, 10, 1, 2, get_type_damage('normal', ['ghost']))
     
     print(approx_dmg)
     get_type_damage('normal', ['ghost'])
     get_type_damage('grass', ['water', 'ground'])
+    
