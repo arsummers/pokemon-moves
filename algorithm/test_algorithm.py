@@ -41,14 +41,18 @@ def test_dual_type_super_effective():
 def test_dual_type_extra_super_effective():
     assert get_type_damage('grass', ['water', 'ground']) == 4
 
+def test_full_damage(user_marshtomp, enemy_charizard):
+    pass
+
 @pytest.fixture
 def user_marshtomp(UserPokemon):
-    marshtomp = UserPokemon()
+    marshtomp = UserPokemon('Marshtomp', ['water', 'ground'], 52, 54, 52, 51, 'torrent', 'water', 29)
     return marshtomp
 
 @pytest.fixture
-def enemy_charizard(UserPokemon):
-    pass
+def enemy_charizard(EnemyPokemon):
+    charizard = EnemyPokemon('Charizard', ['fire', 'flying'], 36)
+    return charizard
 
 
 # should test for is A > B, approx damage. Tests for things that are type effective, type ineffective, spec vs physical, pokemon with same level, pokemon with level disparity, 
