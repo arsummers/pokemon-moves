@@ -144,13 +144,14 @@ def damage(level, move_power, attack, defense, weather, stab, type, targets=1, b
 if __name__ == "__main__":
     marshtomp = UserPokemon('Marshtomp', ['water', 'ground'], 52, 54, 52, 51, 'torrent', 'water', 29)
 
-    bulbasaur = EnemyPokemon('Bulbasaur', ['grass'], 5)
+    linoone = EnemyPokemon('Linoone', ['normal'], 21)
 
     marshtomp.print_species()
+    linoone.print_species()
 
-    approx_dmg = damage(marshtomp.level, 55, marshtomp.attack, 10, 1, 2, get_type_damage('ground', ['ghost']))
+    approx_dmg = damage(marshtomp.level, 55, marshtomp.attack, linoone.defense, 1, 2, get_type_damage('ground', ['ghost']))
     
     print(approx_dmg)
-    get_type_damage('normal', ['ghost'])
-    get_type_damage('grass', ['water', 'ground'])
+    # get_type_damage('normal', ['ghost'])
+    # get_type_damage('grass', ['water', 'ground'])
     
