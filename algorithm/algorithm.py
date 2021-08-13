@@ -19,9 +19,10 @@ class EnemyPokemon:
         self.species = species
         self.enemy_type = enemy_type
         self.level = level
+        self.defense = self.level * 1.75
 
     def print_species(self):
-        print(self.species, self.enemy_type)
+        print(self.species, self.enemy_type, self.defense)
 
 # unsure if I want to keep this as a simple function, or keep it as a class with smaller functions within
 class Modifier:
