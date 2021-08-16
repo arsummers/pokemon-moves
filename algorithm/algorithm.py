@@ -158,7 +158,7 @@ def damage(level, move_power, attack, defense, weather, stab, type, targets=1, b
 
 if __name__ == "__main__":
 
-    mud_shot = MoveUsed('Mud shot', 55, ['ground'], 'special')
+    mud_shot = MoveUsed('Mud shot', 55, 'ground', 'special')
 
     mud_shot.print_move()
 
@@ -170,7 +170,7 @@ if __name__ == "__main__":
     marshtomp.print_species()
     linoone.print_species()
 
-    approx_dmg = damage(marshtomp.level, 55, marshtomp.attack, linoone.defense, 1, 2, get_type_damage('ground', ['ghost']))
+    approx_dmg = damage(marshtomp.level, mud_shot.power, marshtomp.attack, linoone.defense, 1, 2, get_type_damage(mud_shot.type, linoone.enemy_type))
     
     print(approx_dmg)
 
