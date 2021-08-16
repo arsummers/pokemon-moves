@@ -1,3 +1,10 @@
+class MoveUsed:
+    def __init__(self, name, power, type, phys_or_spec):
+        self.name = name
+        self.power = power
+        self.type = type
+        self.phys_or_spec = phys_or_spec
+
 class UserPokemon:
     # probs gonna have to pass some of these in but will need to think about it.
     def __init__(self, species, species_type, attack, defense, spec_attack, spec_defense, ability, move_type, level):
@@ -25,6 +32,11 @@ class EnemyPokemon:
         print(self.species, self.enemy_type, self.defense)
 
 # unsure if I want to keep this as a simple function, or keep it as a class with smaller functions within
+
+# should add a class for the move being used, so it can be stored with a name and everything
+
+
+
 class Modifier:
 
 

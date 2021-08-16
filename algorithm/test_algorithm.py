@@ -1,5 +1,5 @@
 import pytest
-from algorithm import UserPokemon, EnemyPokemon, Modifier, damage, get_type_damage
+from algorithm import UserPokemon, EnemyPokemon, MoveUsed, Modifier, damage, get_type_damage
 
 def test_exists():
     assert UserPokemon
