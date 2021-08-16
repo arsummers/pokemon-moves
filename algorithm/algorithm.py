@@ -5,6 +5,9 @@ class MoveUsed:
         self.type = type
         self.phys_or_spec = phys_or_spec
 
+    def print_move(self):
+        print(self.name, self.power, self.type, self.phys_or_spec)
+
 class UserPokemon:
     # probs gonna have to pass some of these in but will need to think about it.
     def __init__(self, species, species_type, attack, defense, spec_attack, spec_defense, ability, move_type, level):
@@ -154,6 +157,12 @@ def damage(level, move_power, attack, defense, weather, stab, type, targets=1, b
 
 
 if __name__ == "__main__":
+
+    mud_shot = MoveUsed('Mud shot', 55, ['ground'], 'special')
+
+    mud_shot.print_move()
+
+
     marshtomp = UserPokemon('Marshtomp', ['water', 'ground'], 52, 54, 52, 51, 'torrent', 'water', 29)
 
     linoone = EnemyPokemon('Linoone', ['normal'], 21)
@@ -164,6 +173,8 @@ if __name__ == "__main__":
     approx_dmg = damage(marshtomp.level, 55, marshtomp.attack, linoone.defense, 1, 2, get_type_damage('ground', ['ghost']))
     
     print(approx_dmg)
+
+
     # get_type_damage('normal', ['ghost'])
     # get_type_damage('grass', ['water', 'ground'])
     
