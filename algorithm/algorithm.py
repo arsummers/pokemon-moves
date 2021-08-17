@@ -63,7 +63,7 @@ class Modifier:
 
 
     # this syntax is wrong
-    def stab_mod(move_type, stab):
+    def stab_mod(move_type, user_type):
         if move_type in UserPokemon.type and UserPokemon.ability == 'adaptability':
             stab = 2.0
         if move_type in UserPokemon.type:
@@ -170,11 +170,14 @@ if __name__ == "__main__":
     marshtomp.print_species()
     linoone.print_species()
 
-    approx_dmg = damage(marshtomp.level, mud_shot.power, marshtomp.attack, linoone.defense, 1, 2, get_type_damage(mud_shot.type, linoone.enemy_type))
+    weather = Modifier.weather_modifier('rain', mud_shot.type)
+    print(f'The weather modifier: {weather}')
+
+    approx_dmg = damage(marshtomp.level, mud_shot.power, marshtomp.attack, linoone.defense, Modifier.weather_modifier('rain', mud_shot.type), 2, get_type_damage(mud_shot.type, linoone.enemy_type))
     
     print(approx_dmg)
 
 
     # get_type_damage('normal', ['ghost'])
     # get_type_damage('grass', ['water', 'ground'])
-    
+    #will need a STAB calculator next
