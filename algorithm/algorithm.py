@@ -62,11 +62,10 @@ class Modifier:
         return weather_mod
 
 
-    # this syntax is wrong
-    def stab_mod(move_type, user_type):
-        if move_type in UserPokemon.type and UserPokemon.ability == 'adaptability':
+    def stab_mod(move_type, user_type, ability):
+        if move_type in user_type and ability == 'adaptability':
             stab = 2.0
-        if move_type in UserPokemon.type:
+        if move_type in user_type:
             stab = 1.5
         else:
             stab = 1
@@ -98,19 +97,6 @@ class Modifier:
         'steel': {'fire': 0.5, 'water': 0.5, 'electric': 0.5, 'ice': 2, 'rock': 2, 'steel': 0.5, 'fairy': 2},
         'fairy': {'fire': 0.5, 'fighting': 2, 'poison': 0.5, 'dragon': 2, 'dark': 2, 'steel': 0.5},
     }
-
-    # this will need some ironing out too
-    def calculate_type_effectiveness(type_chart):
-        type_effectiveness_multiplier = 1
-        for type in type_chart:
-            if UserPokemon.move_type == type:
-                for key in type.values():
-                    if EnemyPokemon.pokemon_type == key:
-                        type_effectiveness_multiplier *= key[1]
-
-
-
-
 
     # phys_or_spec denotes the type of move used
     def is_burned(burned, ability, phys_or_spec):
@@ -172,6 +158,10 @@ if __name__ == "__main__":
 
     weather = Modifier.weather_modifier('rain', mud_shot.type)
     print(f'The weather modifier: {weather}')
+
+    stabby = Modifier.stab_mod(mud_shot.type, marshtomp.species_type, marshtomp.ability)
+    print(f'The STAB modifier is: {stabby}')
+
 
     approx_dmg = damage(marshtomp.level, mud_shot.power, marshtomp.attack, linoone.defense, Modifier.weather_modifier('rain', mud_shot.type), 2, get_type_damage(mud_shot.type, linoone.enemy_type))
     
