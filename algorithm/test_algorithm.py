@@ -42,10 +42,11 @@ def test_dual_type_extra_super_effective():
     assert get_type_damage('grass', ['water', 'ground']) == 4
 
 def test_gets_basic_stab(mud_shot, user_marshtomp):
-    # mud_shot = MoveUsed('Mud shot', 55, 'ground', 'physical')
 
     assert Modifier.stab_mod(mud_shot.type, user_marshtomp.species_type, user_marshtomp.ability) == 1.5
 
+def test_no_stab(ice_punch, user_marshtomp):
+    assert Modifier.stab_mod(ice_punch.type, user_marshtomp.species_type, user_marshtomp.ability) == 1
 
 
 def test_full_damage(user_marshtomp, enemy_charizard):
@@ -68,7 +69,8 @@ def mud_shot():
 
 @pytest.fixture
 def ice_punch():
-    MoveUsed('Ice punch', 75, 'ice', 'special')
+    ice_punch = MoveUsed('Ice punch', 75, 'ice', 'special')
+    return ice_punch
 
 
 
