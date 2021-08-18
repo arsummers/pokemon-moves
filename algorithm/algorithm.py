@@ -163,7 +163,7 @@ if __name__ == "__main__":
     print(f'The STAB modifier is: {stabby}')
 
 
-    approx_dmg = damage(marshtomp.level, mud_shot.power, marshtomp.attack, linoone.defense, Modifier.weather_modifier('rain', mud_shot.type), 2, get_type_damage(mud_shot.type, linoone.enemy_type))
+    approx_dmg = damage(marshtomp.level, mud_shot.power, marshtomp.attack, linoone.defense, Modifier.weather_modifier('rain', mud_shot.type), Modifier.stab_mod(mud_shot.type, marshtomp.species_type, marshtomp.ability), get_type_damage(mud_shot.type, linoone.enemy_type))
     
     print(approx_dmg)
 
