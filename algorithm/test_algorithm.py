@@ -1,5 +1,5 @@
 import pytest
-from algorithm import UserPokemon, EnemyPokemon, Modifier, damage, get_type_damage
+from algorithm import UserPokemon, EnemyPokemon, MoveUsed, Modifier, damage, get_type_damage
 
 def test_exists():
     assert UserPokemon
@@ -41,14 +41,50 @@ def test_dual_type_super_effective():
 def test_dual_type_extra_super_effective():
     assert get_type_damage('grass', ['water', 'ground']) == 4
 
+def test_gets_basic_stab(mud_shot, user_marshtomp):
+
+    assert Modifier.stab_mod(mud_shot.type, user_marshtomp.species_type, user_marshtomp.ability) == 1.5
+
+def test_no_stab(ice_punch, user_marshtomp):
+    assert Modifier.stab_mod(ice_punch.type, user_marshtomp.species_type, user_marshtomp.ability) == 1
+
+def test_stab_with_adaptability(strength, user_eevee):
+    assert Modifier.stab_mod(strength.type, user_eevee.species_type, user_eevee.ability) == 2
+
+def test_full_damage(user_marshtomp, enemy_charizard):
+    pass
+
 @pytest.fixture
-def user_marshtomp(UserPokemon):
-    marshtomp = UserPokemon()
+def user_marshtomp():
+    marshtomp = UserPokemon('Marshtomp', ['water', 'ground'], 52, 54, 52, 51, 'torrent', 'water', 29)
     return marshtomp
 
 @pytest.fixture
-def enemy_charizard(UserPokemon):
-    pass
+def user_eevee():
+    eevee = UserPokemon('Eevee', ['normal'], 25, 26, 24, 23, 'adaptability', 'normal', 15)
+    return eevee
+
+
+@pytest.fixture
+def enemy_charizard():
+    charizard = EnemyPokemon('Charizard', ['fire', 'flying'], 36)
+    return charizard
+
+@pytest.fixture
+def mud_shot():
+    mud_shot = MoveUsed('Mud shot', 55, 'ground', 'physical')
+    return mud_shot
+
+@pytest.fixture
+def ice_punch():
+    ice_punch = MoveUsed('Ice punch', 75, 'ice', 'special')
+    return ice_punch
+
+@pytest.fixture
+def strength():
+    strength = MoveUsed('Strength', 80, 'normal', 'physical')
+    return strength
+
 
 
 # should test for is A > B, approx damage. Tests for things that are type effective, type ineffective, spec vs physical, pokemon with same level, pokemon with level disparity, 

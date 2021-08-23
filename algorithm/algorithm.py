@@ -1,3 +1,13 @@
+class MoveUsed:
+    def __init__(self, name, power, type, phys_or_spec):
+        self.name = name
+        self.power = power
+        self.type = type
+        self.phys_or_spec = phys_or_spec
+
+    def print_move(self):
+        print(self.name, self.power, self.type, self.phys_or_spec)
+
 class UserPokemon:
     # probs gonna have to pass some of these in but will need to think about it.
     def __init__(self, species, species_type, attack, defense, spec_attack, spec_defense, ability, move_type, level):
@@ -19,11 +29,17 @@ class EnemyPokemon:
         self.species = species
         self.enemy_type = enemy_type
         self.level = level
+        self.defense = self.level * 1.75
 
     def print_species(self):
-        print(self.species, self.enemy_type)
+        print(self.species, self.enemy_type, self.defense)
 
 # unsure if I want to keep this as a simple function, or keep it as a class with smaller functions within
+
+# should add a class for the move being used, so it can be stored with a name and everything
+
+
+
 class Modifier:
 
 
@@ -46,11 +62,10 @@ class Modifier:
         return weather_mod
 
 
-    # this syntax is wrong
-    def stab_mod(move_type, stab):
-        if move_type in UserPokemon.type and UserPokemon.ability == 'adaptability':
+    def stab_mod(move_type, user_type, ability):
+        if move_type in user_type and ability == 'adaptability':
             stab = 2.0
-        if move_type in UserPokemon.type:
+        elif move_type in user_type:
             stab = 1.5
         else:
             stab = 1
@@ -82,19 +97,6 @@ class Modifier:
         'steel': {'fire': 0.5, 'water': 0.5, 'electric': 0.5, 'ice': 2, 'rock': 2, 'steel': 0.5, 'fairy': 2},
         'fairy': {'fire': 0.5, 'fighting': 2, 'poison': 0.5, 'dragon': 2, 'dark': 2, 'steel': 0.5},
     }
-
-    # this will need some ironing out too
-    def calculate_type_effectiveness(type_chart):
-        type_effectiveness_multiplier = 1
-        for type in type_chart:
-            if UserPokemon.move_type == type:
-                for key in type.values():
-                    if EnemyPokemon.pokemon_type == key:
-                        type_effectiveness_multiplier *= key[1]
-
-
-
-
 
     # phys_or_spec denotes the type of move used
     def is_burned(burned, ability, phys_or_spec):
@@ -141,14 +143,31 @@ def damage(level, move_power, attack, defense, weather, stab, type, targets=1, b
 
 
 if __name__ == "__main__":
+
+    mud_shot = MoveUsed('Mud shot', 55, 'ground', 'special')
+
+    mud_shot.print_move()
+
+
     marshtomp = UserPokemon('Marshtomp', ['water', 'ground'], 52, 54, 52, 51, 'torrent', 'water', 29)
 
-    bulbasaur = EnemyPokemon('Bulbasaur', ['grass'], 5)
+    linoone = EnemyPokemon('Linoone', ['normal'], 21)
 
     marshtomp.print_species()
+    linoone.print_species()
 
-    approx_dmg = damage(marshtomp.level, 55, marshtomp.attack, 10, 1, 2, 1)
+    weather = Modifier.weather_modifier('rain', mud_shot.type)
+    print(f'The weather modifier: {weather}')
+
+    stabby = Modifier.stab_mod(mud_shot.type, marshtomp.species_type, marshtomp.ability)
+    print(f'The STAB modifier is: {stabby}')
+
+
+    approx_dmg = damage(marshtomp.level, mud_shot.power, marshtomp.attack, linoone.defense, Modifier.weather_modifier('rain', mud_shot.type), Modifier.stab_mod(mud_shot.type, marshtomp.species_type, marshtomp.ability), get_type_damage(mud_shot.type, linoone.enemy_type))
     
     print(approx_dmg)
-    get_type_damage('normal', ['ghost'])
-    get_type_damage('grass', ['water', 'ground'])
+
+
+    # get_type_damage('normal', ['ghost'])
+    # get_type_damage('grass', ['water', 'ground'])
+    #will need a STAB calculator next
