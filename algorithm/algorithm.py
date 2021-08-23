@@ -65,7 +65,7 @@ class Modifier:
     def stab_mod(move_type, user_type, ability):
         if move_type in user_type and ability == 'adaptability':
             stab = 2.0
-        if move_type in user_type:
+        elif move_type in user_type:
             stab = 1.5
         else:
             stab = 1

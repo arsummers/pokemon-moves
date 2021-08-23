@@ -35,6 +35,7 @@
       - weather
       
 
+*Can try accessing pokeAPI to get enemy type info, since it isn't always apparent*
 ## Limitations
 There's not really a way to know the enemy pokemon's stats beyond level and type. Since the enemy pokemon's defense and special defense both factor into the damage calculator, I've set them to default to 1.75 times the pokemon's level. I noticed that both of those stats are often between 1.5 and 2 times the pokemon's level, so 1.75 will be a decent midpoint. Obviously some will have higher defense than special defense, and vice versa.
 

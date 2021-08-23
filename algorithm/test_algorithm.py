@@ -48,6 +48,8 @@ def test_gets_basic_stab(mud_shot, user_marshtomp):
 def test_no_stab(ice_punch, user_marshtomp):
     assert Modifier.stab_mod(ice_punch.type, user_marshtomp.species_type, user_marshtomp.ability) == 1
 
+def test_stab_with_adaptability(strength, user_eevee):
+    assert Modifier.stab_mod(strength.type, user_eevee.species_type, user_eevee.ability) == 2
 
 def test_full_damage(user_marshtomp, enemy_charizard):
     pass
@@ -56,6 +58,12 @@ def test_full_damage(user_marshtomp, enemy_charizard):
 def user_marshtomp():
     marshtomp = UserPokemon('Marshtomp', ['water', 'ground'], 52, 54, 52, 51, 'torrent', 'water', 29)
     return marshtomp
+
+@pytest.fixture
+def user_eevee():
+    eevee = UserPokemon('Eevee', ['normal'], 25, 26, 24, 23, 'adaptability', 'normal', 15)
+    return eevee
+
 
 @pytest.fixture
 def enemy_charizard():
@@ -72,6 +80,10 @@ def ice_punch():
     ice_punch = MoveUsed('Ice punch', 75, 'ice', 'special')
     return ice_punch
 
+@pytest.fixture
+def strength():
+    strength = MoveUsed('Strength', 80, 'normal', 'physical')
+    return strength
 
 
 
