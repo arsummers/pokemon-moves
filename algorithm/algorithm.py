@@ -52,7 +52,7 @@ class Modifier:
         return target_mod
 
 
-    def weather_modifier(weather, move_type):
+    def weather_modifier( move_type, weather='other'):
         if weather == 'rain' and move_type == 'water' or weather == 'harsh sunlight' and move_type == 'fire':
             weather_mod = 1.5
         elif weather == 'rain' and move_type == 'fire' or weather == 'harsh sunlight' and move_type == 'water':
@@ -139,7 +139,7 @@ def damage(level, move_power, attack, defense, weather, stab, type, targets=1, b
 
     dmg = (((level_mod * move_power * attack_def_mod) / 50) + 2) * other_modifier
 
-    return f'overall approximate damage: {dmg}'
+    return f'overall approximate damage: {int(dmg)}'
 
 
 if __name__ == "__main__":
@@ -156,7 +156,7 @@ if __name__ == "__main__":
     marshtomp.print_species()
     linoone.print_species()
 
-    weather = Modifier.weather_modifier('rain', mud_shot.type)
+    weather = Modifier.weather_modifier(mud_shot.type, 'rain', )
     print(f'The weather modifier: {weather}')
 
     stabby = Modifier.stab_mod(mud_shot.type, marshtomp.species_type, marshtomp.ability)

@@ -85,6 +85,11 @@ def strength():
     strength = MoveUsed('Strength', 80, 'normal', 'physical')
     return strength
 
+@pytest.fixture
+def surf():
+    surf = MoveUsed('Surf', 90, 'water', 'special')
+    return surf
+
 
 
 # should test for is A > B, approx damage. Tests for things that are type effective, type ineffective, spec vs physical, pokemon with same level, pokemon with level disparity, 
