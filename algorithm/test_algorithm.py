@@ -8,6 +8,8 @@ def test_exists():
     assert damage
     assert get_type_damage
 
+# tpe effectiveness tests
+
 def test_test_single_type_not_effective():
     assert get_type_damage('normal', ['ghost']) == 0
 
@@ -41,6 +43,8 @@ def test_dual_type_super_effective():
 def test_dual_type_extra_super_effective():
     assert get_type_damage('grass', ['water', 'ground']) == 4
 
+# same type attack bonus tests
+
 def test_gets_basic_stab(mud_shot, user_marshtomp):
 
     assert Modifier.stab_mod(mud_shot.type, user_marshtomp.species_type, user_marshtomp.ability) == 1.5
@@ -50,6 +54,28 @@ def test_no_stab(ice_punch, user_marshtomp):
 
 def test_stab_with_adaptability(strength, user_eevee):
     assert Modifier.stab_mod(strength.type, user_eevee.species_type, user_eevee.ability) == 2
+
+# weather tests
+def test_weather_boost_water():
+    pass
+
+def test_weather_boost_fire():
+    pass
+
+def test_weather_negate_water():
+    pass
+
+def test_weather_negate_fire():
+    pass
+
+def test_weather_rain_no_move_buff():
+    pass
+
+def test_weather_sunlight_no_move_buff():
+    pass
+
+def test_weather_no_special_effect():
+    pass
 
 def test_full_damage(user_marshtomp, enemy_charizard):
     pass

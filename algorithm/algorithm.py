@@ -29,7 +29,7 @@ class EnemyPokemon:
         self.species = species
         self.enemy_type = enemy_type
         self.level = level
-        self.defense = self.level * 1.75
+        self.defense = self.level * 1.5
 
     def print_species(self):
         print(self.species, self.enemy_type, self.defense)
