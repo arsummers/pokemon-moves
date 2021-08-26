@@ -56,29 +56,34 @@ def test_stab_with_adaptability(strength, user_eevee):
     assert Modifier.stab_mod(strength.type, user_eevee.species_type, user_eevee.ability) == 2
 
 # weather tests
-def test_weather_boost_water():
-    pass
+def test_weather_boost_water(surf):
+    assert Modifier.weather_modifier(surf.type, 'rain') == 1.5
 
-def test_weather_boost_fire():
-    pass
+def test_weather_boost_fire(flamethrower):
+    assert Modifier.weather_modifier(flamethrower.type, 'harsh sunlight') == 1.5
 
-def test_weather_negate_water():
-    pass
+def test_weather_negate_water(surf):
+    assert Modifier.weather_modifier(surf.type, 'harsh sunlight') == 0.5
 
-def test_weather_negate_fire():
-    pass
+def test_weather_negate_fire(flamethrower):
+    assert Modifier.weather_modifier(flamethrower.type, 'rain') == 0.5
 
-def test_weather_rain_no_move_buff():
-    pass
+def test_weather_rain_no_move_buff(strength):
+    assert Modifier.weather_modifier(strength.type, 'rain') == 1
 
-def test_weather_sunlight_no_move_buff():
-    pass
+def test_weather_sunlight_no_move_buff(strength):
+    assert Modifier.weather_modifier(strength.type, 'harsh sunlight') == 1
 
-def test_weather_no_special_effect():
-    pass
+def test_weather_no_special_effect_water_move(surf):
+    assert Modifier.weather_modifier(surf.type) == 1
+
+def test_weather_no_special_effect_normal_move(strength):
+    assert Modifier.weather_modifier(strength.type) == 1
 
 def test_full_damage(user_marshtomp, enemy_charizard):
     pass
+
+# Fixtures
 
 @pytest.fixture
 def user_marshtomp():
@@ -115,6 +120,11 @@ def strength():
 def surf():
     surf = MoveUsed('Surf', 90, 'water', 'special')
     return surf
+
+@pytest.fixture
+def flamethrower():
+    flamethrower = MoveUsed('Flamethrower', 90, 'fire', 'special')
+    return flamethrower
 
 
 
