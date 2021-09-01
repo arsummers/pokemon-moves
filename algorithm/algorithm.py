@@ -1,4 +1,7 @@
 class MoveUsed:
+    """
+    the move your pokemon will use. Fields: name, power, type, phys_or_spec
+    """
     def __init__(self, name, power, type, phys_or_spec):
         self.name = name
         self.power = power
@@ -9,7 +12,9 @@ class MoveUsed:
         print(self.name, self.power, self.type, self.phys_or_spec)
 
 class UserPokemon:
-    # probs gonna have to pass some of these in but will need to think about it.
+    """
+    User's pokemon. All stats should be visible. Fields: species, species_type, attack, defense, spec_attack, spec_defense, ability, move_type, level
+    """
     def __init__(self, species, species_type, attack, defense, spec_attack, spec_defense, ability, move_type, level):
         self.species = species #str
         self.species_type = species_type #lst
@@ -25,6 +30,9 @@ class UserPokemon:
         print(self.species, self.species_type, 'Attack:', {self.attack})
 
 class EnemyPokemon:
+    """
+    Enemy pokemon. Necessary but hidden fields have been approximated. Fields: species, enemy_type, level
+    """
     def __init__(self, species, enemy_type, level):
         self.species = species
         self.enemy_type = enemy_type
@@ -34,16 +42,15 @@ class EnemyPokemon:
     def print_species(self):
         print(self.species, self.enemy_type, self.defense)
 
-# unsure if I want to keep this as a simple function, or keep it as a class with smaller functions within
-
-# should add a class for the move being used, so it can be stored with a name and everything
-
 
 
 class Modifier:
 
 
-    def target_num(targets):
+    def target_num(targets=1):
+        """
+        The number of targets. Defaults to 1. 
+        """
         if targets > 1:
             target_mod = 0.75
         else:
@@ -53,6 +60,9 @@ class Modifier:
 
 
     def weather_modifier( move_type, weather='other'):
+        """
+        weather modifier. Defaults to no special weather. Fields: move_type, weather='other'
+        """
         if weather == 'rain' and move_type == 'water' or weather == 'harsh sunlight' and move_type == 'fire':
             weather_mod = 1.5
         elif weather == 'rain' and move_type == 'fire' or weather == 'harsh sunlight' and move_type == 'water':
@@ -63,6 +73,9 @@ class Modifier:
 
 
     def stab_mod(move_type, user_type, ability):
+        """
+        calculates same type move effectiveness. Fields: move_type, user_type, ability
+        """
         if move_type in user_type and ability == 'adaptability':
             stab = 2.0
         elif move_type in user_type:
@@ -100,6 +113,9 @@ class Modifier:
 
     # phys_or_spec denotes the type of move used
     def is_burned(burned, ability, phys_or_spec):
+        """
+        is your pokemon burned? fields: burned, ability, phys_or_spec. Burned is a boolean
+        """
         if burned == True and ability != 'guts' and phys_or_spec == 'physical':
             burn_mod = 0.5
         else:
@@ -111,7 +127,9 @@ class Modifier:
   # main damage algorithm  
 
 def get_type_damage(move_type, enemy_type):
-    # move type needs to match the initial index. enemy type is the one contained within that nested dictinary.
+    """
+    type damage calculator.
+    """
     type_damage = 1
 
 
@@ -166,8 +184,3 @@ if __name__ == "__main__":
     approx_dmg = damage(marshtomp.level, mud_shot.power, marshtomp.attack, linoone.defense, Modifier.weather_modifier('rain', mud_shot.type), Modifier.stab_mod(mud_shot.type, marshtomp.species_type, marshtomp.ability), get_type_damage(mud_shot.type, linoone.enemy_type))
     
     print(approx_dmg)
-
-
-    # get_type_damage('normal', ['ghost'])
-    # get_type_damage('grass', ['water', 'ground'])
-    #will need a STAB calculator next
