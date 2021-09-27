@@ -157,7 +157,7 @@ def damage(level, move_power, attack, defense, weather, stab, type, targets=1, b
 
     dmg = (((level_mod * move_power * attack_def_mod) / 50) + 2) * other_modifier
 
-    return f'overall approximate damage: {int(dmg)}'
+    return int(dmg)
 
 
 if __name__ == "__main__":
@@ -183,4 +183,4 @@ if __name__ == "__main__":
 
     approx_dmg = damage(marshtomp.level, mud_shot.power, marshtomp.attack, linoone.defense, Modifier.weather_modifier('rain', mud_shot.type), Modifier.stab_mod(mud_shot.type, marshtomp.species_type, marshtomp.ability), get_type_damage(mud_shot.type, linoone.enemy_type))
     
-    print(approx_dmg)
+    print(f'Approximate damage: {approx_dmg}')

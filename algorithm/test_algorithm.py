@@ -80,6 +80,12 @@ def test_weather_no_special_effect_water_move(surf):
 def test_weather_no_special_effect_normal_move(strength):
     assert Modifier.weather_modifier(strength.type) == 1
 
+
+#GENERAL DAMAGE TESTS
+# test for: is STAB better than a slightly higher power level with no stab?
+# is high STAB and high power better than lower level type effectiveness?
+# How do special and physical stats fit in here?
+    
 def test_full_damage(user_marshtomp, enemy_charizard):
     pass
 
